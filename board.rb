@@ -11,7 +11,7 @@ class Board
   end
 
   def self.from_file(filename)
-    rows = File.readlines(filename).map(:chomp)
+    rows = File.readlines(filename).map(&:chomp)
     tiles = rows.map do |row|
       nums = row.split("").map { |char| parseInt(char) }
       nums.map { |num| Tile.new(num) }
