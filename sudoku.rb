@@ -51,6 +51,7 @@ class SudokuGame
   end
 
   def process_parameters
+    board.render
     pos_to_val(retrieve_pos_from_ui, retrieve_value_from_ui)
   end
 
@@ -64,7 +65,7 @@ class SudokuGame
   end
 
   def board_process_terminates?
-    board.terminate?
+    board.solved?
   end
 
   def legal_illegibility_of_p?(pos)
