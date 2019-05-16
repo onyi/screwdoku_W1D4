@@ -55,6 +55,7 @@ class SudokuGame
     board.render
     pos = get_pos
     val = get_val
+    # TODO Check this
     board[*pos] = val
   end
 
@@ -75,6 +76,7 @@ class SudokuGame
       return true
     else
       get_pos
+    end
   end
 
   def valid_val?(val)
