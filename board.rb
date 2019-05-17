@@ -36,7 +36,7 @@ class Board
   end
 
   def columns
-    rows.transpose!
+    rows.transpose
   end
 
   def render
