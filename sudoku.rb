@@ -61,7 +61,6 @@ class SudokuGame
     board.render
     pos = get_pos
     val = get_val
-    # TODO Check this
     board[pos] = val
   end
 
