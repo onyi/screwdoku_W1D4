@@ -25,7 +25,7 @@ class Board
   end
 
   def [](pos)
-    pos = x,y
+    x, y = pos
     grid[x][y]
   end
 
