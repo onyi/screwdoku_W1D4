@@ -73,7 +73,7 @@ class Board
 
     (x..x + 3).each do |j|
       (y..y + 3).each do |i|
-        tiles << self[i, j]
+        tiles << [i, j]
       end
     end
 
