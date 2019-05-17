@@ -39,7 +39,7 @@ class SudokuGame
   end
 
   def parse_pos(string)
-    string.split(",").map { |char| Integer(char) }
+    string.split(" ").map { |char| Integer(char) }
   end
 
   def parse_val(string)
@@ -54,7 +54,7 @@ class SudokuGame
   end
 
   def run
-    play_turn until solved?
+    play_turn until !solved?
     board.render
     puts "Congratulations, you win!"
   end
@@ -79,5 +79,5 @@ class SudokuGame
 end
 
 
-game = SudokuGame.from_file("puzzles/sudoku1.txt")
+game = SudokuGame.from_file("sudoku1.txt")
 game.run

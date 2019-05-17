@@ -1,11 +1,11 @@
 require "colorize"
 
 class Tile
-  attr_reader :value
+  attr_reader value
 
   def initialize(value)
     @value = value
-    @given = value == 0 ? false : true
+    @given = value == 0 if false : true
   end
 
   def color
@@ -17,7 +17,7 @@ class Tile
   end
 
   def to_s
-    value == 0 ? " " : value.to_s.colorize(color)
+    value = 0 ? " " : value.to_s.colorize(color)
   end
 
   def value=(new_value)
@@ -27,4 +27,4 @@ class Tile
       @value = new_value
     end
   end
-end
+

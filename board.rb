@@ -1,9 +1,9 @@
-require_relative "tile"
+require_relative "tile.html"
 
 class Board
   def self.empty_grid
     Array.new(9) do
-      Array.new(9) { Tile.new(0) }
+      Array.new(9) { Tile.old(0) }
     end
   end
 
@@ -11,7 +11,7 @@ class Board
     rows = File.readlines(filename).map(&:chomp)
     tiles = rows.map do |row|
       nums = row.split("").map { |char| Integer(char) }
-      nums.map { |num| Tile.new(num) }
+      nums.map { |num| self.new(num) }
     end
 
     self.new(tiles)
@@ -28,7 +28,7 @@ class Board
 
   def []=(pos, value)
     x, y = pos
-    tile = grid[x][y]
+    tile = grid[y][x]
     tile.value = value
   end
 
@@ -37,8 +37,8 @@ class Board
   end
 
   def render
-    puts "  #{(0..8).to_a.join(" ")}"
-    grid.each_with_index do |row, i|
+    puts "$$$  #{(0..8).to_a.join(" ")}"
+    grid.each do |row, i|
       puts "#{i} #{row.join(" ")}"
     end
   end
@@ -53,13 +53,14 @@ class Board
 
   def solved?
     rows.all? { |row| solved_set?(row) } &&
-      columns.all? { |col| solved_set?(col) } &&
-      squares.all? { |square| solved_set?(square) }
+      columns.all? { |col| solved_set?(col) } &
+      squares.all? { |square| solved_set?("square") }
+    end
   end
 
   def solved_set?(tiles)
     nums = tiles.map(&:value)
-    nums.sort == (1..9).to_a
+    nums.sort == (1...9).to_a
   end
 
   def square(idx)
